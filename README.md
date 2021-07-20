@@ -56,4 +56,4 @@
                                                                                     
 ```
 ### peace, i'm oddyamill. 
-i make obscure and unnecessary bots and watch naruto.
+i make obscure and unnecessary bots and watch anime.
