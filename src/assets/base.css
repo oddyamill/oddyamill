@@ -1,0 +1,65 @@
+/* a.href.cloudflare.com */
+
+:root {
+  --button-blue: rgb(0, 81, 195);
+  --button-blue-hover: rgb(0, 54, 129);
+  --text-white: rgb(242, 242, 242);
+}
+
+body {
+  font-family:
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    Fira Sans,
+    Droid Sans,
+    'Helvetica Neue',
+    sans-serif;
+}
+
+h1 {
+  font-weight: 300;
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+a {
+  color: var(--button-blue);
+}
+
+@media (hover: hover) {
+  a:hover {
+    color: var(--button-blue-hover);
+  }
+}
+
+.button {
+  display: inline-block;
+  background-color: var(--button-blue);
+  color: var(--text-white);
+  text-decoration: none;
+  padding: 25px;
+  margin: 0;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  user-select: none;
+  line-height: 0;
+  transition: all 0.2s;
+}
+
+.button:hover {
+  background-color: var(--button-blue-hover);
+  color: var(--text-white);
+}
+/* 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+} */
