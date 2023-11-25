@@ -4,9 +4,9 @@ import { ref } from 'vue'
 const message = ref('Сделать кофе')
 
 const makeCoffee = async (click: MouseEvent) => {
-  const response = await fetch('https://tunnel.oddya.ru/make-coffee', { mode: 'no-cors' })
+  const response = await fetch('http://localhost:8788/make-coffee', { method: 'BREW' })
 
-  if (click.target) {
+  if (click.target !== null) {
     // wtf
     ;(click.target as HTMLButtonElement).disabled = true
   }
@@ -16,7 +16,6 @@ const makeCoffee = async (click: MouseEvent) => {
       message.value = 'Кофеварка не работает'
       break
 
-    case 0:
     case 418:
       message.value = 'У меня только чайник'
       break
