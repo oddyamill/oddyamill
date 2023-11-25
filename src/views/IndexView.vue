@@ -4,7 +4,7 @@ import { ref } from 'vue'
 const message = ref('Сделать кофе')
 
 const makeCoffee = async (click: MouseEvent) => {
-  const response = await fetch('http://localhost:8788/make-coffee', { method: 'BREW' })
+  const response = await fetch('/make-coffee', { method: 'BREW' })
 
   if (click.target !== null) {
     // wtf
