@@ -1,5 +1,10 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
+
+if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  document.querySelector('meta[name="theme-color"]')!.setAttribute('content', '#202020');
+}
+
 </script>
 
 <template>
