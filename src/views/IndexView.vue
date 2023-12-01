@@ -30,7 +30,7 @@ const makeCoffee = async (click: MouseEvent) => {
 <template>
   <h1>всем пис</h1>
   <p>в будущем на данной странице будут размещены различные приколы</p>
-  <button class="button" style="cursor: pointer" @click="makeCoffee">
+  <button class="button" @click="makeCoffee">
     {{ message }}
   </button>
 </template>

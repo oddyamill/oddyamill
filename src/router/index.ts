@@ -6,12 +6,12 @@ const router = createRouter({
     {
       path: '/',
       name: 'Index',
-      component: () => import('../views/IndexView.vue')
+      component: () => import('../views/IndexView.vue'),
     },
     {
       path: '/:pathMatch(.*)',
       name: 'NotFound',
-      component: () => import('../views/NotFoundView.vue')
+      component: () => import('../views/NotFoundView.vue'),
     }
   ]
 })
