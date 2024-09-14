@@ -1,31 +1,13 @@
 ---
+import type { CfProperties } from '@cloudflare/workers-types'
 import Layout from '@layouts/Layout.astro'
 
-type Cf = {
-  city: string
-  country: string
-  timezone: string
-  latitude: string
-  longitude: string
-  httpProtocol: string
-  continent: string
-  asn: number
-  asOrganization: string
-  colo: string
-}
-
-function getRequest(): [string, Cf] {
-  return [
-    Astro.request.headers.get('cf-connecting-ip') as string,
-    Astro.locals.runtime.cf as Cf,
-  ]
-}
-
-function getGoogleMapsLink(cf: Cf): string {
+function getGoogleMapsLink(cf: CfProperties): string {
   return `https://www.google.com/maps/place/@${cf.latitude},${cf.longitude}/`
 }
 
-const [ip, cf] = getRequest()
+const ip = Astro.request.headers.get('cf-connecting-ip')!
+const cf = Astro.locals.runtime.cf!
 
 export const prerender = false
 ---
