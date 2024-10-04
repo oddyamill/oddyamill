@@ -10,7 +10,12 @@ type Location = {
 }
 
 async function getLocation(): Promise<Location | undefined> {
-  const response = await fetch('https://speed.cloudflare.com/locations')
+  const response = await fetch('https://speed.cloudflare.com/locations', {
+    cf: {
+      cacheTtl: 604800,
+      cacheEverything: true,
+    },
+  })
 
   if (!response.ok) {
     return undefined
