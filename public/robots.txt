@@ -3,3 +3,5 @@ Disallow: /cdn-cgi/
 
 User-agent: *
 Disallow: /
+
+Sitemap: https://oddya.ru/sitemap-index.xml
