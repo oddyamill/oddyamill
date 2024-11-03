@@ -41,6 +41,20 @@ function getIp(): string {
   )
 }
 
+const continents: Record<ContinentCode, string> = {
+  AF: 'Africa',
+  AN: 'Antarctica',
+  AS: 'Asia',
+  EU: 'Europe',
+  NA: 'North America',
+  OC: 'Oceania',
+  SA: 'South America',
+}
+
+function getContinent(): string {
+  return continents[cf.continent as ContinentCode] ?? cf.continent ?? 'Unknown'
+}
+
 const cf = Astro.locals.runtime.cf!
 ---
 
@@ -51,7 +65,7 @@ const cf = Astro.locals.runtime.cf!
   <p>твоя страна: {cf.country}</p>
   <p>твой часовой пояс: {cf.timezone}</p>
   <p>твой протокол: {cf.httpProtocol}</p>
-  <p>твой континент: {cf.continent}</p>
+  <p>твой континент: {getContinent()}</p>
   <p>твой asn: {cf.asn}</p>
   <p>твоя организация: {cf.asOrganization}</p>
   <p>твой центр обработки данных: {[cf.colo, getColo()]}</p>
