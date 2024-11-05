@@ -1,4 +1,5 @@
 ---
+import Warp from '@components/warp.astro'
 import Layout from '@layouts/Layout.astro'
 export const prerender = false
 
@@ -69,4 +70,5 @@ const cf = Astro.locals.runtime.cf!
   <p>твой asn: {cf.asn}</p>
   <p>твоя организация: {cf.asOrganization}</p>
   <p>твой центр обработки данных: {[cf.colo, getColo()]}</p>
+  {cf.asOrganization === 'Cloudflare Warp' && <Warp />}
 </Layout>

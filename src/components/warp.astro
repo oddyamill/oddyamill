@@ -1,0 +1,17 @@
+<p id="warp">ты подключен к WARP</p>
+
+<script>
+  async function isPlus(): Promise<boolean> {
+    const response = await fetch('/cdn-cgi/trace')
+
+    if (!response.ok) {
+      return false
+    }
+
+    return (await response.text()).includes('warp=plus')
+  }
+
+  if (await isPlus()) {
+    document.querySelector('#warp')!.textContent += '+'
+  }
+</script>
