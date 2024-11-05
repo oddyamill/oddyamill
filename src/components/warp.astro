@@ -1,12 +1,13 @@
 <p id="warp">ты подключен к WARP</p>
 
-<script>
-  async function isPlus(): Promise<boolean> {
+<script async is:inline>
+  async function isPlus(callback) {
     const response = await fetch('/cdn-cgi/trace')
-    return response.ok && (await response.text()).includes('warp=plus')
+
+    if (response.ok && (await response.text()).includes('warp=plus')) {
+      callback()
+    }
   }
 
-  if (await isPlus()) {
-    document.querySelector('#warp')!.textContent += '+'
-  }
+  isPlus(() => (document.querySelector('#warp').textContent += '+'))
 </script>

@@ -59,7 +59,7 @@ function getContinent(): string {
 const cf = Astro.locals.runtime.cf!
 ---
 
-<Layout title="пробиватор" description="выключите впн">
+<Layout title="пробиватор" description="выключите впн" allowInline={true}>
   <h1>привет</h1>
   <p>твой ip: {getIp()}</p>
   <p>твой город: {cf.city ?? 'говноедск'}</p>

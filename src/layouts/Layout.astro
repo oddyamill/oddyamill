@@ -4,12 +4,14 @@ import { ViewTransitions } from 'astro:transitions'
 type Opts = {
   title: string
   description: string
+  allowInline?: boolean
 }
 
 // todo
 type Props = Opts & { frontmatter?: Opts }
 
-const { title, description } = Astro.props.frontmatter ?? Astro.props
+const { title, description, allowInline } =
+  Astro.props.frontmatter ?? Astro.props
 ---
 
 <!doctype html>
@@ -27,7 +29,7 @@ const { title, description } = Astro.props.frontmatter ?? Astro.props
     <meta name="og:title" content={title} />
     <meta
       http-equiv="Content-Security-Policy"
-      content="script-src 'self' connect-src: 'self' cloudflarestatus.com;"
+      content={`script-src 'self' ${allowInline ? "'unsafe-inline' " : ''}connect-src: 'self' cloudflarestatus.com;`}
     />
     <meta
       name="theme-color"
