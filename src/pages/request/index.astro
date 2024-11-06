@@ -57,9 +57,10 @@ function getContinent(): string {
 }
 
 const cf = Astro.locals.runtime.cf!
+const isWarp = cf.asOrganization === 'Cloudflare Warp'
 ---
 
-<Layout title="пробиватор" description="выключите впн" allowInline={true}>
+<Layout title="пробиватор" description="выключите впн" allowInline={isWarp}>
   <h1>привет</h1>
   <p>твой ip: {getIp()}</p>
   <p>твой город: {cf.city ?? 'говноедск'}</p>
@@ -70,5 +71,5 @@ const cf = Astro.locals.runtime.cf!
   <p>твой asn: {cf.asn}</p>
   <p>твоя организация: {cf.asOrganization}</p>
   <p>твой центр обработки данных: {[cf.colo, getColo()]}</p>
-  {cf.asOrganization === 'Cloudflare Warp' && <Warp />}
+  {isWarp && <Warp />}
 </Layout>
