@@ -1,4 +1,8 @@
-<p id="warp">ты подключен к WARP</p>
+---
+import Text from '@components/Text.astro'
+---
+
+<p id="warp"><Text key="request.warp" /></p>
 
 <script is:inline>
   async function isPlus(callback) {

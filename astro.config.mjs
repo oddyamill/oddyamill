@@ -4,7 +4,6 @@ import sitemap from '@astrojs/sitemap'
 
 export default defineConfig({
   site: 'https://oddya.ru',
-  output: 'hybrid',
   adapter: cloudflare(),
   build: {
     assets: 'assets',

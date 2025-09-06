@@ -1,6 +1,10 @@
 ---
-import Warp from '@components/warp.astro'
+import Warp from '@components/Warp.astro'
 import Layout from '@layouts/Layout.astro'
+import Text from '@components/Text.astro'
+
+export { getStaticPaths } from '@intl'
+
 export const prerender = false
 
 type Location = {
@@ -60,16 +64,17 @@ const cf = Astro.locals.runtime.cf!
 const isWarp = cf.asOrganization === 'Cloudflare Warp'
 ---
 
-<Layout title="пробиватор" description="выключите впн" allowInline={isWarp}>
-  <h1>привет</h1>
-  <p>твой ip: {getIp()}</p>
-  <p>твой город: {cf.city ?? 'говноедск'}</p>
-  <p>твоя страна: {cf.country}</p>
-  <p>твой часовой пояс: {cf.timezone}</p>
-  <p>твой протокол: {cf.httpProtocol}</p>
-  <p>твой континент: {getContinent()}</p>
-  <p>твой asn: {cf.asn}</p>
-  <p>твоя организация: {cf.asOrganization}</p>
-  <p>твой центр обработки данных: {[cf.colo, getColo()]}</p>
+<Layout title="request.title" description="request.description" allowInlineScripts={isWarp}>
+  <h1><Text key="request.message"></h1>
+  <p><Text key="request.ip"/>: {getIp()}</p>
+  <p><Text key="request.city"/>: {cf.city ?? '???'}</p>
+  <p><Text key="request.country"/>: {cf.country}</p>
+  <p><Text key="request.timezone"/>: {cf.timezone}</p>
+  <p><Text key="request.protocol"/>: {cf.httpProtocol}</p>
+  <p><Text key="request.continent"/>: {getContinent()}</p>
+  <p><Text key="request.asn"/>: {cf.asn}</p>
+  <p><Text key="request.organization"/>: {cf.asOrganization}</p>
+  <p><Text key="request.colo"/>: {[cf.colo, getColo()]}</p>
   {isWarp && <Warp />}
 </Layout>
+

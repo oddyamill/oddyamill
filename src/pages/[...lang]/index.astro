@@ -1,0 +1,11 @@
+---
+import Layout from '@layouts/Layout.astro'
+import Text from '@components/Text.astro'
+
+export { getStaticPaths } from '@intl'
+---
+
+<Layout title="index.title" description="index.description">
+  <h1><Text key="index.header" /></h1>
+  <p><Text key="index.message" /></p>
+</Layout>

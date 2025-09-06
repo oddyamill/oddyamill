@@ -1,0 +1,10 @@
+---
+import { t, type TranslationKey } from '@intl'
+
+type Props = {
+  key: TranslationKey
+}
+---
+
+{t(Astro.params.lang ?? 'en', Astro.props.key)}
+

@@ -1,16 +1,17 @@
 ---
-import { ViewTransitions } from 'astro:transitions'
+import type { TranslationKey } from '@intl'
+import { t } from '@intl'
+import { ClientRouter } from 'astro:transitions'
 
-type Opts = {
-  title: string
-  description: string
-  allowInline?: boolean
+interface LayoutProps {
+  title: TranslationKey
+  description: TranslationKey
+  allowInlineScripts?: boolean
 }
 
-// todo
-type Props = Opts & { frontmatter?: Opts }
+type Props = LayoutProps & { frontmatter?: LayoutProps }
 
-const { title, description, allowInline } =
+const { title, description, allowInlineScripts } =
   Astro.props.frontmatter ?? Astro.props
 ---
 
@@ -25,11 +26,11 @@ const { title, description, allowInline } =
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <meta name="og:image" content="/favicon-192x192.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <title>{title}</title>
-    <meta name="og:title" content={title} />
+    <title>{t(Astro.params.lang!, title)}</title>
+    <meta name="og:title" content={t(Astro.params.lang!, title)} />
     <meta
       http-equiv="Content-Security-Policy"
-      content={`script-src 'self' ${allowInline ? "'unsafe-inline' " : ''}connect-src: 'self' cloudflarestatus.com;`}
+      content={`script-src 'self' ${allowInlineScripts ? "'unsafe-inline' " : ''}connect-src: 'self' cloudflarestatus.com;`}
     />
     <meta
       name="theme-color"
@@ -41,9 +42,9 @@ const { title, description, allowInline } =
       media="(prefers-color-scheme: dark)"
       content="#202020"
     />
-    <meta name="description" content={description} />
-    <meta name="og:description" content={description} />
-    <ViewTransitions />
+    <meta name="description" content={t(Astro.params.lang!, description)} />
+    <meta name="og:description" content={t(Astro.params.lang!, description)} />
+    <ClientRouter />
   </head>
   <body>
     <main class="center" transition:animate="none">
